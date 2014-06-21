@@ -24,7 +24,7 @@ public class RecorridoBicisFileParserTest {
 	@Before
 	public void prepararParser() {
 		try{
-			is = new FileInputStream("C:/Users/Alan/Downloads/recorrido-bicis-2010 - Copy.csv");
+			is = new FileInputStream("recorrido-bicis-2010 - Copy.csv");
 			isr = new InputStreamReader(is);
 			br = new BufferedReader(isr);
 			
