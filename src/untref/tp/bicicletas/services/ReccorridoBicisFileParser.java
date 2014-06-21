@@ -118,7 +118,7 @@ public class ReccorridoBicisFileParser {
 		}
 		return bicicletasMenosUsadas;
 	}
-	
+
 	public List<Recorrido> getRecorridoMasVecesRealizado() {
 		List<Recorrido> recorridoMasVecesRealizado = new LinkedList<Recorrido>();
 		int cantidadDeVecesRealizado = 0;
