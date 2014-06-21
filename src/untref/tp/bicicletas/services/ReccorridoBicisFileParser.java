@@ -43,13 +43,19 @@ public class ReccorridoBicisFileParser {
 		Recorrido recorrido = new Recorrido(lineInfo[3], lineInfo[6]);
 
 		if (bicicletas.containsKey(lineInfo[1])) {
-			bicicletas.replace(lineInfo[1], bicicletas.get(lineInfo[1]) + 1);
+			int repeticiones = bicicletas.get(lineInfo[1]) + 1;
+			bicicletas.remove(lineInfo[1]);
+			bicicletas.put(lineInfo[1], repeticiones);
+			//bicicletas.replace(lineInfo[1], bicicletas.get(lineInfo[1]) + 1);
 		}else{
 			bicicletas.put(lineInfo[1], 1);
 		}
 
 		if (recorridos.containsKey(recorrido)) {
-			recorridos.replace(recorrido, recorridos.get(recorrido) + 1);
+			int repeticiones = recorridos.get(recorrido) + 1;
+			recorridos.remove(lineInfo[1]);
+			recorridos.put(recorrido, repeticiones);
+			//recorridos.replace(recorrido, recorridos.get(recorrido) + 1);
 		}else{
 			recorridos.put(recorrido, 1);
 		}
