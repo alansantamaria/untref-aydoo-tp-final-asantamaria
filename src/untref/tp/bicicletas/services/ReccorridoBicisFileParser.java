@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import untref.tp.bibicletas.domain.Recorrido;
+import untref.tp.bicicletas.domain.Recorrido;
 
 public class ReccorridoBicisFileParser {
 
@@ -21,48 +21,63 @@ public class ReccorridoBicisFileParser {
 
 	public void parseFile (BufferedReader br) {
 		boolean firstLineReaded = false;
+		int cantidadDeLineas = 2;
 		try {
 			while (br.ready()) {
 
 				if (firstLineReaded) {					
-					processLine(br.readLine());
+					try {
+						processLine(br.readLine(), cantidadDeLineas);
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+					}
+					cantidadDeLineas++;
 				}else{
 					br.readLine();
 					firstLineReaded = true;
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void processLine(String readLine) {
-		String[] lineInfo = readLine.split(";");
+	private void processLine(String readLine, int line) throws Exception {
 
-		Recorrido recorrido = new Recorrido(lineInfo[3], lineInfo[6]);
+		try {
+			String[] lineInfo = readLine.split(";");
 
-		if (bicicletas.containsKey(lineInfo[1])) {
-			int repeticiones = bicicletas.get(lineInfo[1]) + 1;
-			bicicletas.remove(lineInfo[1]);
-			bicicletas.put(lineInfo[1], repeticiones);
-			//bicicletas.replace(lineInfo[1], bicicletas.get(lineInfo[1]) + 1);
-		}else{
-			bicicletas.put(lineInfo[1], 1);
+			String idBicicleta = lineInfo[1];
+			String idOrigen = lineInfo[3];
+			String idDestino = lineInfo[6];
+			String tiempoDeUso = lineInfo[8];
+
+			Recorrido recorrido = new Recorrido(idOrigen, idDestino);
+
+			if (bicicletas.containsKey(idBicicleta)) {
+				int repeticiones = bicicletas.get(idBicicleta) + 1;
+				bicicletas.remove(idBicicleta);
+				bicicletas.put(idBicicleta, repeticiones);
+			}else{
+				bicicletas.put(idBicicleta, 1);
+			}
+
+			if (recorridos.containsKey(recorrido)) {
+				int repeticiones = recorridos.get(recorrido) + 1;
+				recorridos.remove(recorrido);
+				recorridos.put(recorrido, repeticiones);
+			}else{
+				recorridos.put(recorrido, 1);
+			}
+
+			horasDeUso += Integer.parseInt(tiempoDeUso);
+			cantidadDeRegistros++;
+			promedioDeUso = horasDeUso / cantidadDeRegistros;
+
+		}catch(Exception e) {
+			throw new Exception("La linea " + line + " no se puede parsear");
 		}
 
-		if (recorridos.containsKey(recorrido)) {
-			int repeticiones = recorridos.get(recorrido) + 1;
-			recorridos.remove(lineInfo[1]);
-			recorridos.put(recorrido, repeticiones);
-			//recorridos.replace(recorrido, recorridos.get(recorrido) + 1);
-		}else{
-			recorridos.put(recorrido, 1);
-		}
-
-		horasDeUso += Integer.parseInt(lineInfo[8]);
-		cantidadDeRegistros++;
-		promedioDeUso = horasDeUso / cantidadDeRegistros;
 
 	}
 
@@ -104,6 +119,7 @@ public class ReccorridoBicisFileParser {
 			String cadaBicicleta = (String) iterador.next();
 			int usosDeCadaBicileta = bicicletas.get(cadaBicicleta);
 			int cantidadDeVecesUtilizada = usosDeCadaBicileta;
+			bicicletasMenosUsadas.add(cadaBicicleta);
 			while (iterador.hasNext()) {
 				cadaBicicleta = (String) iterador.next();
 				usosDeCadaBicileta = bicicletas.get(cadaBicicleta);
