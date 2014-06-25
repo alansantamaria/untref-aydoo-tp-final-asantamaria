@@ -29,7 +29,7 @@ public class ProcesadorEstadisticoBicicletas {
 
 	public void processDirectory(String path) throws Exception {
 		if (directoryToControl.equals(path)) {
-			throw new Exception("El directorio para procesar ya está siendo monitoreado.");
+			throw new Exception("El directorio para procesar ya esta siendo monitoreado.");
 		}
 		ReccorridoBicisFileParser parser = new ReccorridoBicisFileParser();
 		File  directory = new File(path);
