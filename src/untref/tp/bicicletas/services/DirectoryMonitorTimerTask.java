@@ -30,6 +30,7 @@ public class DirectoryMonitorTimerTask extends TimerTask{
 				if (files[i].getName().contains(".zip")) {
 					try {
 						processZip(files[i]);
+						new File(directoryToControl + "processedFiles/").mkdir();
 						files[i].renameTo(new File(directoryToControl + "processedFiles/" + files[i].getName()));
 
 					} catch (IOException e) {

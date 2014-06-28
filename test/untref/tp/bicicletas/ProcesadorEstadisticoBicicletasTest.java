@@ -9,16 +9,10 @@ import org.junit.Test;
 import untref.tp.bicicletas.main.ProcesadorEstadisticoBicicletas;
 
 public class ProcesadorEstadisticoBicicletasTest {
-	
-	@Test(expected = Exception.class)
-	public void processDirectoryDebeRetornarExceptionSiElDirectorioEsIgualAlDirectorioDeControl() throws Exception {
-		ProcesadorEstadisticoBicicletas procesador = new ProcesadorEstadisticoBicicletas("test/untref/tp/bicicletas/files/");
-		procesador.processDirectory("test/untref/tp/bicicletas/files/");
-	}
-	
+		
 	@Test
 	public void processDirectoryTestDebeGenerarUnArchivoYml() throws Exception {
-		ProcesadorEstadisticoBicicletas procesador = new ProcesadorEstadisticoBicicletas("test/untref/tp/bicicletas/files/");
+		ProcesadorEstadisticoBicicletas procesador = new ProcesadorEstadisticoBicicletas();
 		procesador.processDirectory("test/untref/tp/bicicletas/files/testProcessDirectory/");
 		
 		File dir =  new File("test/untref/tp/bicicletas/files/testProcessDirectory/");

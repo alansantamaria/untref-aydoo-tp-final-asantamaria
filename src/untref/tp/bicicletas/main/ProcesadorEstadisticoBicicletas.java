@@ -15,22 +15,13 @@ import untref.tp.bicicletas.services.YAMLFileWritter;
 
 public class ProcesadorEstadisticoBicicletas {
 
-	private static String directoryToControl;
 
-	public ProcesadorEstadisticoBicicletas (String dir) {
-
-		 directoryToControl = dir;
-		
+	public void startDeamon(String path) {
 		Timer directoryMonitor = new Timer();
-		
-		directoryMonitor.schedule(new DirectoryMonitorTimerTask(dir), 0, 1000);
-
+		directoryMonitor.schedule(new DirectoryMonitorTimerTask(path), 0, 1000);
 	}
 
 	public void processDirectory(String path) throws Exception {
-		if (directoryToControl.equals(path)) {
-			throw new Exception("El directorio para procesar ya esta siendo monitoreado.");
-		}
 		ReccorridoBicisFileParser parser = new ReccorridoBicisFileParser();
 		File  directory = new File(path);
 		if (directory.exists()){

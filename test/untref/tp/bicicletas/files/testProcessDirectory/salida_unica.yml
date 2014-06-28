@@ -1,0 +1,10 @@
+Procesamiento del directorio: test/untref/tp/bicicletas/files/testProcessDirectory/
+Bicicletas Mas Usadas:
+	id: 419
+Bicicletas Menos Usadas:
+	id: 452
+	id: 464
+Recorrido Mas Realizado:
+	Origen id: 5
+	Destino id: 5
+Promedio de uso de las bicicletas: 42.0

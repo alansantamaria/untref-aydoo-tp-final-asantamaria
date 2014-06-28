@@ -24,7 +24,7 @@ public class RecorridoBicisFileParserTest {
 	@Before
 	public void prepararParser() {
 		try{
-			is = new FileInputStream("test/untref/tp/bicicletas/files/recorrido-bicis-2010.csv");
+			is = new FileInputStream("test/untref/tp/bicicletas/files/csvs/recorrido-bicis-2010.csv");
 			isr = new InputStreamReader(is);
 			br = new BufferedReader(isr);
 
