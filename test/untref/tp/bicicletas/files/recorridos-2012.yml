@@ -1,9 +1,9 @@
-Procesamiento del directorio: test/untref/tp/bicicletas/files/
+--- !Procesamiento del directorio: test/untref/tp/bicicletas/files/
 Bicicletas Mas Usadas:
-	id: 705
+ id: 705
 Bicicletas Menos Usadas:
-	id: 734
+ id: 734
 Recorrido Mas Realizado:
-	Origen id: 3
-	Destino id: 3
+ Origen id: 3
+ Destino id: 7
 Promedio de uso de las bicicletas: 27.0

@@ -40,6 +40,8 @@ public class ProcesadorEstadisticoBicicletas {
 							}
 							parser.parseFile(new BufferedReader(new InputStreamReader(new FileInputStream(cadaContenidoDelZip.getName()))));
 							fos.close();
+							File f = new File(cadaContenidoDelZip.getName());
+							System.out.println(f.delete());
 						}
 						zip.closeEntry();
 					}

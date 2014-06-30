@@ -19,28 +19,28 @@ public class YAMLFileWritter {
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
 			
-			pw.println("Procesamiento del directorio: " + dir);
+			pw.println("--- !Procesamiento del directorio: " + dir);
 			
 			pw.println("Bicicletas Mas Usadas:");
 			Iterator<String> iteradorDeBicis = salida.getBicicletasMasUsadas().iterator();
 			while (iteradorDeBicis.hasNext()) {
 				String bicicletaId = iteradorDeBicis.next();
-				pw.println("\tid: " + bicicletaId);
+				pw.println(" id: " + bicicletaId);
 			}
 			
 			pw.println("Bicicletas Menos Usadas:");
 			iteradorDeBicis = salida.getBicicletasMenosUsadas().iterator();
 			while (iteradorDeBicis.hasNext()) {
 				String bicicletaId = iteradorDeBicis.next();
-				pw.println("\tid: " + bicicletaId);
+				pw.println(" id: " + bicicletaId);
 			}
 			
 			pw.println("Recorrido Mas Realizado:");
 			Iterator<Recorrido> iteradorDeRecorridos = salida.getRecorridoMasRealizado().iterator();
 			while (iteradorDeRecorridos.hasNext()) {
 				Recorrido recorrido = iteradorDeRecorridos.next();
-				pw.println("\tOrigen id: " +  recorrido.getIdEstacionOrigen());
-				pw.println("\tDestino id: " +  recorrido.getIdEstacionOrigen());
+				pw.println(" Origen id: " +  recorrido.getIdEstacionOrigen());
+				pw.println(" Destino id: " +  recorrido.getIdEstacionDestino());
 			}
 			
 			pw.println("Promedio de uso de las bicicletas: " + salida.getPromedioDeUso()); 

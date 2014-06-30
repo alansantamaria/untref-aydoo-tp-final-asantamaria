@@ -68,6 +68,8 @@ public class DirectoryMonitorTimerTask extends TimerTask{
 				parser.parseFile(new BufferedReader(new InputStreamReader(new FileInputStream(cadaContenidoDelZip.getName()))));
 				System.out.println(cadaContenidoDelZip.getName() + " procesado.");
 				fos.close();
+				File f = new File(cadaContenidoDelZip.getName());
+				f.delete();
 			}
 			zip.closeEntry();
 		}
